@@ -1,0 +1,26 @@
+# nvim
+alias vi='nvim -u NONE'
+alias more='nvim -Rp'
+alias vim='nvim'
+
+# exa
+alias ll='exa --long --git'
+
+# hstr
+alias hh=hstr
+
+# music
+alias mute='amixer -c 0 set Master 0%'
+alias psst='amixer -c 0 set Master 0%'
+alias pssst='amixer -c 0 set Master 0%'
+alias pst='amixer -c 0 set Master 0%'
+
+# git
+alias ga='git add'
+alias gc='git commit'
+
+# dev stuff
+alias yamlcheck='python -c "import sys, yaml as y; y.safe_load(open(sys.argv[1]))"'
+
+# nmcli
+alias nc='nmcli connection'

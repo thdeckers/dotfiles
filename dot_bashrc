@@ -1,0 +1,57 @@
+#ctivate .bashrc
+
+# source global
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+
+export HISTCONTROL=ignorespace   # leading space hides commands from history
+export HISTFILESIZE=10000        # increase history file size (default is 500)
+export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
+
+
+#set -o vi
+
+export EDITOR='nvim'
+
+
+# HSTR configuration - add this to ~/.bashrc
+export HSTR_CONFIG=hicolor       # get more colors
+shopt -s histappend              # append new history items to .bash_history
+# ensure synchronization between bash memory and history file
+export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"
+# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\e^hstr -- \n"'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+#if [[ $- =~ .*i.* ]]; then bind '"\C-xk": "\C-a hstr -k \C-j"'; fi
+
+## Fedora
+# my powerline
+if [ -f "${HOME}/.powerline.sh" ]; then
+  source "${HOME}/.powerline.sh"
+fi
+
+# my bins
+PATH="$HOME/.local/bin:$HOME/.bin:$PATH"
+export PATH
+
+# ssh-agent
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
+alias mute='amixer -c 0 set Master 0%'
+alias psst='amixer -c 0 set Master 0%'
+alias pssst='amixer -c 0 set Master 0%'
+alias pst='amixer -c 0 set Master 0%'
+
+function prettylines() {
+  awk '{if (NR%2==0){print "\033[32m" $0 "\033[0m"} else{ print "\033[33m" $0 "\033[0m"}}';
+}
+alias pl='prettylines'
+
+#new stuff
+alias yamlcheck='python -c "import sys, yaml as y; y.safe_load(open(sys.argv[1]))"'
+
+if [[ -f ~/.bashrc_alias ]]; then
+  source ~/.bashrc_alias
+fi

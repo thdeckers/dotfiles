@@ -1,0 +1,3 @@
+include ~/.sway/basics
+include ~/.sway/bindings
+include ~/.sway/setuphome

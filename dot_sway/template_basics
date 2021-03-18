@@ -1,0 +1,75 @@
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term {{ .tools.term }}
+set $menu wofi --show drun -i -l top -M contains -w 1
+set $music "{{ .tools.music }}"
+
+input * {
+  xkb_layout de
+}
+
+set $wsmain "1:main"
+set $wsbrowser "2:browser"
+set $wsterminal "3:terminal"
+set $wsmisc "4:misc"
+set $wsmail "5:thunderbird"
+set $wsstuff "6:stuff"
+set $wsstatus "8:monitoring"
+set $wsmusic "9:music"
+
+# some color
+
+set $textc "{{ .style.text }}"
+set $bgc "{{ .style.background }}"
+set $borderc "{{ .style.border }}"
+set $textfocusc "{{ .style.text_focus }}"
+set $bgfocusc "{{ .style.background_focus }}"
+set $borderfocusc "{{ .style.border_focus }}"
+set $texturgentc "{{ .style.text_urgent }}"
+set $bgurgentc "{{ .style.background_urgent }}"
+set $borderurgentc "{{ .style.border_urgent }}"
+set $textinputc "{{ .style.text_input }}"
+set $bginputc "{{ .style.background_input }}"
+
+client.focused $borderfocusc $bgfocusc $textfocusc $bgfocusc $borderfocusc
+client.unfocused $borderc $bgc $textc $bgc $borderc
+client.focused_inactive $borderc $bgc $textc $bgc $borderc
+client.urgent $borderurgentc $bgurgentc $texturgentc $bgurgentc $borderurgentc
+
+
+# Layout
+for_window [class=".*"] border pixel 2
+gaps inner 5
+gaps outer 5
+
+
+# Workspaces
+workspace $wsmain
+workspace $wsbrowser
+workspace $wsterminal
+workspace $wsmisc
+workspace $wsmail
+workspace $wsstuff
+workspace $wsstatus
+workspace $wsmusic
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    swaybar_command waybar
+}
+
+#
+# Autostart:
+#
+
+exec mako
+exec nextcloud
+#exec dropbox start

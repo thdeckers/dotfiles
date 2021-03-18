@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -ue pipefail
+
+bat1p=$(cat /sys/class/power_supply/BAT0/capacity)
+bat2p=$(cat /sys/class/power_supply/BAT1/capacity)
+bat1s=$(cat /sys/class/power_supply/BAT0/status)
+bat2s=$(cat /sys/class/power_supply/BAT1/status)
+
+if [[ ${bat1s} == "Unknown" ]]; then
+  bat1t="Battery1: Full"
+else
+  bat1t="Battery1: ${bat1p}% ${bat1s}"
+fi
+if [[ ${bat2s} == "Unknown" ]]; then
+  bat2t="Battery2: Full"
+else
+  bat2t="Battery2: ${bat2p}% ${bat2s}"
+fi
+
+date=$(date +'%Y-%m-%d %H:%M:%S')
+
+echo "${bat1t} - ${bat2t} - ${date}"
