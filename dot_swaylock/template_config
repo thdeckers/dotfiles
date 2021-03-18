@@ -1,3 +1,0 @@
-ignore-empty-password
-daemonize
-#image={{ .homedir }}/Pictures/forest.png
