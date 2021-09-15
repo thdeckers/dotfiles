@@ -1,0 +1,192 @@
+global !p
+def complete(t, opts):
+	if t:
+		opts = [ m[len(t):] for m in opts if m.startswith(t) ]
+	if len(opts) == 1:
+		return opts[0]
+	return "(" + '|'.join(opts) + ')'
+endglobal
+
+
+snippet template: "Ansible template module" b
+- name: '$1'
+	ansible.builtin.template:
+		src: '$2'
+		dest: '$3'
+		mode: '${4:0644}'
+		owner: '${5:root}'
+		group: '${6:root}'
+		state: '${7:present}'
+		backup: ${8:false}
+		force: ${9:true}
+endsnippet
+
+snippet copy: "Ansible copy module" b
+- name: '$1'
+	ansible.builtin.copy:
+		src: '$2'
+		dest: '$3'
+		mode: '${4:0644}'
+		owner: '${5:root}'
+		group: '${6:root}'
+		state: '${7:present}'
+		backup: ${8:false}
+		force: ${9:true}
+endsnippet
+
+snippet debug: "Ansible debug module" b
+- ansible.builtin.debug:
+	msg: "${1:message}"
+endsnippet
+
+snippet package: "Ansible package module" b
+- name: '$1'
+	ansible.builtin.package:
+		name: '$2'
+		state: '${3:present}'
+		use: '${4:auto}'
+endsnippet
+
+snippet package: "Ansible dnf module" b
+- name: '$1'
+	ansible.builtin.dnf:
+		name: '$2'
+		state: '${3:present}'
+		update_cache: ${4:false}
+		security: ${5:false}
+endsnippet
+
+snippet systemd: "Ansible systemd module" b
+- name: '$1'
+	ansible.builtin.systemd:
+		name: '$2'
+		state: '$3`!p snip.rv=complete(t[3], ['started', 'restarted', 'reloaded', 'stopped'])`'
+		enabled: ${4:true}
+endsnippet
+
+snippet command: "Ansible command module" b
+- name: '$1'
+	ansible.builtin.command:
+		cmd: '$2'
+endsnippet
+
+snippet user: "Ansible user module" b
+- name: '$1'
+	ansible.builtin.user:
+		name: '$2'
+		groups: '${3:nobody}'
+		state: '${4:present}'
+		system: ${5:true}
+		shell: '${6:/bin/bash}'
+endsnippet
+
+snippet user: "Ansible group module" b
+- name: '$1'
+	ansible.builtin.group:
+		name: '$2'
+		state: '${3:present}'
+		system: ${4:true}
+endsnippet
+
+snippet file: "Ansible file module" b
+- name: '$1'
+	ansible.builtin.file:
+		path: '$2'
+		state: '$3`!p snip.rv=complete(t[3], ['absent', 'directory', 'file', 'hard', 'link', 'touch'])`'
+		mode: '${4:0755}'
+		owner: '${5:root}'
+		group: '${6:root}'
+endsnippet
+
+snippet directory: "Ansible file module with directory state" b
+- name: '$1'
+	ansible.builtin.file:
+		path: '$2'
+		state: 'directory'
+		mode: '${3:0755}'
+		owner: '${4:root}'
+		group: '${5:root}'
+endsnippet
+
+snippet touch: "Ansible file module with touch state" b
+- name: '$1'
+	ansible.builtin.file:
+		path: '$2'
+		state: 'touch'
+		mode: '${3:0755}'
+		owner: '${4:root}'
+		group: '${5:root}'
+		access_time: 'preserve'
+		access_time: 'preserve'
+endsnippet
+
+snippet firewalld: "Ansible firewalld module" b
+- name: '$1'
+	ansible.posix.firewalld:
+		state: 'enabled'
+		permanent: true
+endsnippet
+
+snippet wget: "ansible get_url module" b
+- name: '$1'
+	ansible.builtin.get_url:
+		url: '${2:https://}'
+		dest: '$3'
+		mode: '${4:0644}'
+		owner: '${5:root}'
+		group: '${6:root}'
+		backup: ${7:false}
+		force: ${8:false}
+		validate_certs: ${9:true}
+endsnippet
+
+snippet stat: "Ansible firewalld module" b
+- name: '$1'
+	ansible.builtin.stat:
+		path: '$2'
+endsnippet
+
+snippet include_role: "Ansible include_role module" b
+- name: '$1'
+	ansible.builtin.include_role:
+		name: '$2'
+		public: ${3:false}
+		tasks_from: 'main'
+		defaults_from: 'main'
+		vars_from: 'main'
+		handlers_from: 'main'
+		allow_duplicates: true
+		${4:apply:}
+endsnippet
+
+snippet import_role: "Ansible include_role module" b
+- name: '$1'
+	ansible.builtin.import_role:
+		name: '$2'
+		tasks_from: 'main'
+		defaults_from: 'main'
+		vars_from: 'main'
+		handlers_from: 'main'
+		allow_duplicates: true
+endsnippet
+
+snippet include_tasks: "Ansible include_tasks module" b
+- name: 'Include tasks $1'
+	ansible.builtin.include_tasks:
+		file: '$1'
+		${2:apply:}
+endsnippet
+
+snippet import_tasks: "Ansible import_tasks module" b
+- name: 'Import tasks $1'
+	ansible.builtin.import_tasks: '$1'
+endsnippet
+
+snippet ansbui "autocomplete ansible builtin" b
+ansible.builtin.$1:
+endsnippet
+
+snippet tags: "autocomplete tags" b
+tags:
+	- '$1'
+endsnippet
