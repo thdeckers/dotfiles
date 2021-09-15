@@ -16,9 +16,8 @@ snippet template: "Ansible template module" b
 		mode: '${4:0644}'
 		owner: '${5:root}'
 		group: '${6:root}'
-		state: '${7:present}'
-		backup: ${8:false}
-		force: ${9:true}
+		backup: ${7:false}
+		force: ${8:true}
 endsnippet
 
 snippet copy: "Ansible copy module" b
@@ -29,9 +28,8 @@ snippet copy: "Ansible copy module" b
 		mode: '${4:0644}'
 		owner: '${5:root}'
 		group: '${6:root}'
-		state: '${7:present}'
-		backup: ${8:false}
-		force: ${9:true}
+		backup: ${7:false}
+		force: ${8:true}
 endsnippet
 
 snippet debug: "Ansible debug module" b
@@ -47,7 +45,7 @@ snippet package: "Ansible package module" b
 		use: '${4:auto}'
 endsnippet
 
-snippet package: "Ansible dnf module" b
+snippet dnf: "Ansible dnf module" b
 - name: '$1'
 	ansible.builtin.dnf:
 		name: '$2'
@@ -80,7 +78,7 @@ snippet user: "Ansible user module" b
 		shell: '${6:/bin/bash}'
 endsnippet
 
-snippet user: "Ansible group module" b
+snippet group: "Ansible group module" b
 - name: '$1'
 	ansible.builtin.group:
 		name: '$2'
