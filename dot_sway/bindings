@@ -1,5 +1,5 @@
 # start a terminal
-bindsym $mod+Return exec $term 
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -12,6 +12,9 @@ bindsym $mod+m exec $music
 
 # logout
 bindsym $mod+x exec swaylock
+
+# change keyboard layout
+bindsym $mod+i input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout next
 
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
@@ -125,7 +128,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec light -A 5 && notify-send "Light: $(light -G)"
 bindsym XF86MonBrightnessDown exec light -U 5 && notify-send "Light: $(light -G)"
 
-bindsym $mod+F1 exec playerctl play-pause
+bindsym $mod+p exec playerctl play-pause
 bindsym $mod+F5 exec grim -g "$(slurp)" ~/Pictures/Screenshot-$(date "+%Y%m%d-%H%M%S").png
 
 

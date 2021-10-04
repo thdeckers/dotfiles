@@ -9,16 +9,17 @@ set $term {{ .tools.term }}
 set $menu wofi --show drun -i -l top -M contains -w 1
 set $music "{{ .tools.music }}"
 
-input * {
-  xkb_layout de
+input type:keyboard {
+  xkb_layout us,de
+  xkb_options caps:ctrl_modifier
 }
 
 set $wsmain "1:main"
 set $wsbrowser "2:browser"
 set $wsterminal "3:terminal"
 set $wsmisc "4:misc"
-set $wsmail "5:thunderbird"
-set $wsstuff "6:stuff"
+set $wsmail "5:teams"
+set $wsstuff "6:chrome"
 set $wsstatus "8:monitoring"
 set $wsmusic "9:music"
 
