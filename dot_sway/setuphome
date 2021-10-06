@@ -1,4 +1,4 @@
-set $monR DP-4
+set $monR 'Ancor Communications Inc ASUS PB287Q 0x00006CC7'
 set $monL eDP-1
 
 output $monR mode 2560x1440@59.951000Hz position 0,0

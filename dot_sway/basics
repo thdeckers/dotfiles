@@ -5,9 +5,9 @@ set $down j
 set $up k
 set $right l
 
-set $term {{ .tools.term }}
+set $term kitty
 set $menu wofi --show drun -i -l top -M contains -w 1
-set $music "{{ .tools.music }}"
+set $music "flatpak run com.spotify.Client"
 
 input type:keyboard {
   xkb_layout us,de
@@ -25,17 +25,17 @@ set $wsmusic "9:music"
 
 # some color
 
-set $textc "{{ .style.text }}"
-set $bgc "{{ .style.background }}"
-set $borderc "{{ .style.border }}"
-set $textfocusc "{{ .style.text_focus }}"
-set $bgfocusc "{{ .style.background_focus }}"
-set $borderfocusc "{{ .style.border_focus }}"
-set $texturgentc "{{ .style.text_urgent }}"
-set $bgurgentc "{{ .style.background_urgent }}"
-set $borderurgentc "{{ .style.border_urgent }}"
-set $textinputc "{{ .style.text_input }}"
-set $bginputc "{{ .style.background_input }}"
+set $textc "#969696"
+set $bgc "#363636"
+set $borderc "#000000"
+set $textfocusc "#000000"
+set $bgfocusc "#9cd15c"
+set $borderfocusc "#000000"
+set $texturgentc "#FF0D0D"
+set $bgurgentc "#FF0D0D"
+set $borderurgentc "#000000"
+set $textinputc "#000000"
+set $bginputc "#9cd15c"
 
 client.focused $borderfocusc $bgfocusc $textfocusc $bgfocusc $borderfocusc
 client.unfocused $borderc $bgc $textc $bgc $borderc
@@ -67,10 +67,17 @@ bar {
     swaybar_command waybar
 }
 
+
+# Laptop lid
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+
 #
 # Autostart:
 #
 
+exec kanshi
 exec mako
 exec nextcloud
 #exec dropbox start
+exec swayidle -w timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
