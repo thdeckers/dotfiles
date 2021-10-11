@@ -1,31 +1,27 @@
 {
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["sway/language","custom/arrow-spotify","custom/spotify","custom/arrow-pulseaudio","pulseaudio","custom/arrow-network","network","custom/arrow-battery","battery#bat1","battery#bat2","custom/arrow-tray","tray","custom/arrow-clock","clock"],
+    "modules-right": ["sway/language","custom/arrow-last","custom/spotify","custom/arrow-mint","pulseaudio","custom/arrow-orange","network","custom/arrow-blue","battery#bat1","battery#bat2","custom/arrow-green","tray","custom/arrow-mint","clock"],
     "sway/window": {
         "max-length": 50
     },
-    "custom/arrow-clock": {
+    "custom/arrow-mint": {
       "format": "",
       "tooltip": false
     },
-    "custom/arrow-tray": {
+    "custom/arrow-green": {
       "format": "",
       "tooltip": false
     },
-    "custom/arrow-battery": {
+    "custom/arrow-blue": {
       "format": "",
       "tooltip": false
     },
-    "custom/arrow-network": {
+    "custom/arrow-orange": {
       "format": "",
       "tooltip": false
     },
-    "custom/arrow-pulseaudio": {
-      "format": "",
-      "tooltip": false
-    },
-    "custom/arrow-spotify": {
+    "custom/arrow-last": {
       "format": "",
       "tooltip": false
     },
@@ -119,7 +115,7 @@
       "format": " {}",
       "max-length": 80,
       "interval": 5, // Remove this if your script is endless and write in loop
-      "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+      "exec": "$HOME/.config/waybar/modules/mediaplayer.sh 2> /dev/null", // Script in resources folder
       "exec-if": "pgrep spotify"
     }
 }
