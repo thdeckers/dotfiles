@@ -144,6 +144,21 @@ snippet stat: "Ansible firewalld module" b
 		path: '$2'
 endsnippet
 
+snippet lineinfile: "Ansible lininfile module " b
+- name: '$1'
+	ansible.builtin.lineinfile:
+		path: '$2'
+		state: present
+		regexp: '$3'
+		line: '$4'
+		mode: '${5:0644}'
+		owner: '${6:root}'
+		group: '${7:root}'
+		create: false
+		backrefs: false
+		backup: false
+endsnippet
+
 snippet include_role: "Ansible include_role module" b
 - name: '$1'
 	ansible.builtin.include_role:

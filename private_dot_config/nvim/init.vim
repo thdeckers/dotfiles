@@ -31,7 +31,7 @@ call plug#begin()
 
   Plug 'mbbill/undotree'
   Plug 'dkarter/bullets.vim'
-  Plug 'terryma/vim-multiple-cursors'
+  "Plug 'terryma/vim-multiple-cursors'
 
   " Git
   Plug 'tpope/vim-fugitive'

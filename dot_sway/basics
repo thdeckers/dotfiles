@@ -18,8 +18,9 @@ set $wsmain "1:main"
 set $wsbrowser "2:browser"
 set $wsterminal "3:terminal"
 set $wsmisc "4:misc"
-set $wsmail "5:teams"
-set $wsstuff "6:chrome"
+set $wscom "5:teams"
+set $wschrome "6:chrome"
+set $wsbackground "7:running"
 set $wsstatus "8:monitoring"
 set $wsmusic "9:music"
 
@@ -54,8 +55,9 @@ workspace $wsmain
 workspace $wsbrowser
 workspace $wsterminal
 workspace $wsmisc
-workspace $wsmail
-workspace $wsstuff
+workspace $wscom
+workspace $wschrome
+workspace $background
 workspace $wsstatus
 workspace $wsmusic
 

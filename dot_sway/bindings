@@ -60,9 +60,9 @@ bindsym $mod+Shift+Right move right
     bindsym $mod+2 workspace $wsbrowser
     bindsym $mod+3 workspace $wsterminal
     bindsym $mod+4 workspace $wsmisc
-    bindsym $mod+5 workspace $wsmail
-    bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
+    bindsym $mod+5 workspace $wscom
+    bindsym $mod+6 workspace $wschrome
+    bindsym $mod+7 workspace $wsbackground
     bindsym $mod+8 workspace $wsstatus
     bindsym $mod+9 workspace $wsmusic
     bindsym $mod+0 workspace 10
@@ -71,9 +71,9 @@ bindsym $mod+Shift+Right move right
     bindsym $mod+Shift+2 move container to workspace $wsbrowser
     bindsym $mod+Shift+3 move container to workspace $wsterminal
     bindsym $mod+Shift+4 move container to workspace $wsmisc
-    bindsym $mod+Shift+5 move container to workspace $wsmail
-    bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+5 move container to workspace $wscom
+    bindsym $mod+Shift+6 move container to workspace $wschrome
+    bindsym $mod+Shift+7 move container to workspace $wsbackground
     bindsym $mod+Shift+8 move container to workspace $wsstatus
     bindsym $mod+Shift+9 move container to workspace $wsmusic
     bindsym $mod+Shift+0 move container to workspace 10
@@ -129,7 +129,7 @@ bindsym XF86MonBrightnessUp exec light -A 5 && notify-send "Light: $(light -G)"
 bindsym XF86MonBrightnessDown exec light -U 5 && notify-send "Light: $(light -G)"
 
 bindsym $mod+p exec playerctl play-pause
-bindsym $mod+F5 exec grim -g "$(slurp)" ~/Pictures/Screenshot-$(date "+%Y%m%d-%H%M%S").png
+bindsym $mod+F5 exec grim -g "$(slurp)" - | swappy -f -
 
 
 #

@@ -2,8 +2,8 @@
     border: none;
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Hack Nerd Font;
+    font-size: 20px;
     min-height: 0;
 }
 
@@ -38,7 +38,7 @@ window#waybar.chromium {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 10px;
     background-color: transparent;
     color: #ffffff;
     border-bottom: 3px solid transparent;
@@ -81,17 +81,33 @@ window#waybar.chromium {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    margin: 0 4px;
+}
+
+
+
+#clock {
+    background-color: #248691;
     color: #ffffff;
 }
 
-#clock {
-    background-color: #64727D;
+#custom-arrow-clock {
+    background-color: #9cbf1d;
+    color: #248691;
+}
+
+#tray {
+    background-color: #9cbf1d;
+}
+
+#custom-arrow-tray {
+    color: #9cbf1d;
+    background-color: #2980b9;
+
 }
 
 #battery {
-    background-color: {{ .style.background }};
-    color: {{ .style.text }};
+    background-color: #2980b9;
+    color: #ffffff;
 }
 
 #battery.charging {
@@ -116,6 +132,54 @@ window#waybar.chromium {
     animation-direction: alternate;
 }
 
+#custom-arrow-battery {
+    background-color: #e3964d;
+    color: #2980b9;
+}
+
+#network {
+    background-color: #e3964d;
+    color: #000000
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#custom-arrow-network {
+    color: #e3964d;;
+    background-color: #248691;
+}
+
+#pulseaudio {
+    background-color: #248691;
+    color: #ffffff;
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
+}
+
+#custom-arrow-pulseaudio {
+    color: #248691;
+    background-color: #9cbf1d;
+}
+
+#custom-spotify {
+    color: #000000;
+    background-color: #9cbf1d;
+}
+
+#custom-arrow-spotify {
+    color: #9cbf1d;
+    background-color: {{ .style.background }};
+}
+
+
+
+
+
 label:focus {
     background-color: #000000;
 }
@@ -133,24 +197,6 @@ label:focus {
     background-color: #90b1b1;
 }
 
-#network {
-    background-color: #2980b9;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-/*
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
-}
-
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
-*/
 #custom-media {
     background-color: #66cc99;
     color: #2a5c45;
@@ -171,10 +217,6 @@ label:focus {
 
 #temperature.critical {
     background-color: #eb4d4b;
-}
-
-#tray {
-    background-color: #2980b9;
 }
 
 #idle_inhibitor {

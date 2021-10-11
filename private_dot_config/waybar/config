@@ -1,10 +1,51 @@
 {
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "battery#bat1","battery#bat2", "clock"],
+    "modules-right": ["sway/language","custom/arrow-spotify","custom/spotify","custom/arrow-pulseaudio","pulseaudio","custom/arrow-network","network","custom/arrow-battery","battery#bat1","battery#bat2","custom/arrow-tray","tray","custom/arrow-clock","clock"],
     "sway/window": {
         "max-length": 50
+    },
+    "custom/arrow-clock": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/arrow-tray": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/arrow-battery": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/arrow-network": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/arrow-pulseaudio": {
+      "format": "",
+      "tooltip": false
+    },
+    "custom/arrow-spotify": {
+      "format": "",
+      "tooltip": false
+    },
+    "sway/workspaces": {
+      "disable-scroll": true,
+      "format": "{icon} {name}",
+      "format-icons": {
+        "1:main": "",
+        "2:browser": "",
+        "3:terminal": "",
+        "4:misc": "",
+        "5:teams": "",
+        "6:chrome": "",
+        "7:running": "",
+        "8:monitoring": "",
+        "9:music": "",
+        "urgent": "",
+        "focused": "",
+        "default": ""
+      }
     },
     "battery#bat1": {
         "format": "{capacity}% {icon}",
@@ -17,7 +58,15 @@
         "format-icons": ["", "", "", "", ""]
     },
     "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
+        "format-alt": "{:%a, %d. %b  %H:%M}",
+        "tooltip": true
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
     },
     "pulseaudio": {
       // "scroll-step": 1, // %, can be a float
@@ -37,5 +86,40 @@
           "default": ["", "", ""]
       },
       "on-click": "pavucontrol"
+    },
+    "sway/language": {
+      "format": "{short} {variant}",
+    },
+    "network": {
+      "format": "{icon}",
+      "format-alt": "{ipaddr} {icon}",
+      "format-icons": {
+        "wifi": ["﬉"],
+        "ethernet": [""],
+        "disconnected": [""]
+      },   
+      "format-alt-click": "click-right",
+      "format-wifi": "{essid} ﬉ {signalStrength}% ",
+      "format-ethernet": " {ipaddr} ",
+      "format-disconnected": "", 
+      "tooltip-format": "{ifname} via {gwaddr}",
+      "tooltip-format-wifi": "{essid} ﬉ {ifname} via {gwaddr}",
+      "tooltip-format-ethernet": "{ifname} {ipaddr} ",
+      "tooltip-format-disconnected": "Disconnected",
+      "on-click": "gnome-control-center network",
+      "tooltip": true
+    },
+    "custom/grim": {
+      "format": "",
+      "on-click": "grim -g \"$(slurp)\" - | swappy -f -",
+      "on-click-middle": "grim -g $(slurp) - | swappy -f -",
+      "on-click-right": "grim -g $(slurp) - | swappy -f -",
+    },
+    "custom/spotify": {
+      "format": " {}",
+      "max-length": 80,
+      "interval": 5, // Remove this if your script is endless and write in loop
+      "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
+      "exec-if": "pgrep spotify"
     }
 }
