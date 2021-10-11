@@ -71,14 +71,14 @@ bar {
 
 
 # Laptop lid
-bindswitch lid:on output eDP-1 disable
-bindswitch lid:off output eDP-1 enable
+bindswitch --reload lid:on output eDP-1 disable
+bindswitch --reload lid:off output eDP-1 enable
 
 #
 # Autostart:
 #
 
-exec kanshi
+exec_always $HOME/.bin/startkanshi
 exec mako
 exec nextcloud
 #exec dropbox start
