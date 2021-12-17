@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["sway/language","custom/arrow-last","custom/spotify","custom/arrow-mint","pulseaudio","custom/arrow-orange","network","custom/arrow-blue","battery#bat1","battery#bat2","custom/arrow-green","tray","custom/arrow-mint","clock"],
+    "modules-right": ["sway/language","custom/arrow-last","custom/spotify","custom/arrow-mint","pulseaudio","custom/arrow-orange","custom/vpncount","network","custom/arrow-blue","battery#bat1","battery#bat2","custom/arrow-green","tray","custom/arrow-mint","clock"],
     "sway/window": {
         "max-length": 50
     },
@@ -88,22 +88,29 @@
     },
     "network": {
       "format": "{icon}",
-      "format-alt": "{ipaddr} {icon}",
+      "format-alt": "{ifname} {ipaddr}",
       "format-icons": {
-        "wifi": ["﬉"],
-        "ethernet": [""],
-        "disconnected": [""]
+        "wifi": ["W"],
+        "ethernet": ["E"],
+        "disconnected": ["D"],
+        "default": "[]"
       },   
       "format-alt-click": "click-right",
       "format-wifi": "{essid} ﬉ {signalStrength}% ",
-      "format-ethernet": " {ipaddr} ",
-      "format-disconnected": "", 
+      "format-ethernet": "{ipaddr} ",
+      "format-disconnected": "D", 
       "tooltip-format": "{ifname} via {gwaddr}",
       "tooltip-format-wifi": "{essid} ﬉ {ifname} via {gwaddr}",
-      "tooltip-format-ethernet": "{ifname} {ipaddr} ",
+      "tooltip-format-ethernet": "{ifname} {ipaddr}",
       "tooltip-format-disconnected": "Disconnected",
       "on-click": "gnome-control-center network",
       "tooltip": true
+    },
+    "custom/vpncount": {
+      "format": "VPN:{}",
+      "max-length": 80,
+      "interval": 120, // Remove this if your script is endless and write in loop
+      "exec": "$HOME/.bin/vpncount"
     },
     "custom/grim": {
       "format": "",
