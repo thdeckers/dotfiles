@@ -3,6 +3,12 @@ profile home_multihead {
   output "Ancor Communications Inc ASUS PB287Q 0x00006CC7" mode 2560x1440@59.951000Hz position 0,0
 }
 
+profile home_multihead_3 {
+  output "Goldstar Company Ltd LG HDR 4K 0x00004345" mode 2560x1440@59.951Hz position 0,0
+  output "Ancor Communications Inc ASUS PB287Q 0x00006CC7" mode 2560x1440@59.951000Hz position 2560,0
+  output eDP-1 mode 1920x1080@60.049000Hz position 5120,0
+}
+
 profile home {
   output "Ancor Communications Inc ASUS PB287Q 0x00006CC7" mode 2560x1440@59.951000Hz position 0,0
 }
