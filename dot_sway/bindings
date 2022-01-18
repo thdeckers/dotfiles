@@ -131,6 +131,11 @@ bindsym XF86MonBrightnessDown exec light -U 5 && notify-send "Light: $(light -G)
 bindsym $mod+p exec playerctl play-pause
 bindsym $mod+F5 exec grim -g "$(slurp)" - | swappy -f -
 
+bindsym $mod+KP_Left move workspace to output left
+bindsym $mod+KP_Right move workspace to output right
+bindsym --locked $mod+KP_Down output * dpms off
+bindsym --locked $mod+KP_Up output * dpms on
+
 
 #
 # Resizing containers:
