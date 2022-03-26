@@ -1,5 +1,7 @@
 # dotfiles
 
+- Install [Nerdfont Symbols](https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/Symbols-2048-em%20Nerd%20Font%20Complete.ttf)
+
 
 ### Config
 
