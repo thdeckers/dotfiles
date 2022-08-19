@@ -104,6 +104,7 @@ snippet directory: "Ansible file module with directory state" b
 		mode: '${3:0755}'
 		owner: '${4:root}'
 		group: '${5:root}'
+		recurse: false
 endsnippet
 
 snippet touch: "Ansible file module with touch state" b
@@ -159,6 +160,24 @@ snippet lineinfile: "Ansible lininfile module " b
 		backup: false
 endsnippet
 
+snippet set_fact: "Ansible set_fact module " b
+- name: '$1'
+	ansible.builtin.set_fact:
+		${2:var:}
+endsnippet
+
+snippet assert: "Ansible assert module " b
+- name: '$1'
+	ansible.builtin.assert:
+		that:
+			- $2
+		fail_msg: "$3"
+		success_msg: "$4"
+		quiet: ${5:false}
+endsnippet
+
+
+
 snippet include_role: "Ansible include_role module" b
 - name: '$1'
 	ansible.builtin.include_role:
@@ -169,7 +188,6 @@ snippet include_role: "Ansible include_role module" b
 		vars_from: 'main'
 		handlers_from: 'main'
 		allow_duplicates: true
-		${4:apply:}
 endsnippet
 
 snippet import_role: "Ansible include_role module" b
@@ -187,7 +205,6 @@ snippet include_tasks: "Ansible include_tasks module" b
 - name: 'Include tasks $1'
 	ansible.builtin.include_tasks:
 		file: '$1'
-		${2:apply:}
 endsnippet
 
 snippet import_tasks: "Ansible import_tasks module" b
